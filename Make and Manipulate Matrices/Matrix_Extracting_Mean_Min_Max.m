@@ -72,3 +72,46 @@ disp(rowMins);
 rowMaxs = max(A, [], 2);  % Finds max in each row
 disp('Row-wise max values:');
 disp(rowMaxs)
+
+%-----------------------------------------------------------
+% MATLAB Moving Statistics: movmean, movmax, etc.
+%-----------------------------------------------------------
+
+%% 1. Moving Average with Missing Data
+% Use movmean(x, n, "omitmissing") to compute a moving average
+% while ignoring NaN values in the window
+
+x = [1 NaN 3 4 NaN 6 7];
+n = 3;  % Window size
+
+y_avg = movmean(x, n, "omitmissing");
+
+disp('Original data with NaNs:');
+disp(x);
+disp('Moving average (omit missing):');
+disp(y_avg);
+
+%% 2. Other Moving Window Functions
+% The same syntax applies for movmax, movmin, movstd, etc.
+
+y_max = movmax(x, n, "omitmissing");
+disp('Moving maximum (omit missing):');
+disp(y_max);
+
+% You can similarly use:
+% - movmin(x, n, "omitmissing")
+% - movstd(x, n, "omitmissing")
+% - movvar(x, n, "omitmissing")
+% etc.
+
+%% 3. Notes
+% - These functions help smooth or extract trends in time-series or sequential data.
+% - "omitmissing" avoids NaNs propagating through the output unnecessarily.
+% - Window size `n` defines how many adjacent values are considered at a time.
+
+%% 4. Reference
+% MathWorks movmean documentation:
+% https://www.mathworks.com/help/matlab/ref/movmean.html
+% Other related functions:
+% https://www.mathworks.com/help/matlab/moving-window-calculations.html
+
