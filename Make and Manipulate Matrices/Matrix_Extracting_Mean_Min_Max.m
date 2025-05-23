@@ -71,4 +71,4 @@ disp(rowMins);
 % Maximum across rows
 rowMaxs = max(A, [], 2);  % Finds max in each row
 disp('Row-wise max values:');
-disp(
+disp(rowMaxs)
